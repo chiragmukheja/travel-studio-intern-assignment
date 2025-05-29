@@ -20,7 +20,7 @@ export default function RequestsPage() {
   const fetchRequests = async () => {
     try {
       const res = await axios.get(
-        'https://d97a-27-255-185-134.ngrok-free.app/api/requests',
+        'https://travel-studio-intern-backend.vercel.app/api/requests',
         {
           headers: {
             Accept: 'application/json',
@@ -46,7 +46,7 @@ export default function RequestsPage() {
   const resolveRequest = async (id: number) => {
     try {
       await axios.patch(
-        `https://d97a-27-255-185-134.ngrok-free.app/api/requests/${id}`,
+        `https://travel-studio-intern-backend.vercel.app//api/requests/${id}`,
         {},
         {
           headers: {
