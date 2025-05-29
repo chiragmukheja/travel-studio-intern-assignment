@@ -20,13 +20,7 @@ export default function RequestsPage() {
   const fetchRequests = async () => {
     try {
       const res = await axios.get(
-        'https://travel-studio-intern-backend.vercel.app/api/requests',
-        {
-          headers: {
-            Accept: 'application/json',
-            'ngrok-skip-browser-warning': 'true',
-          },
-        }
+        'https://travel-studio-intern-backend.vercel.app/api/requests'
       );
 
       if (Array.isArray(res.data)) {
@@ -43,22 +37,6 @@ export default function RequestsPage() {
     }
   };
 
-  const resolveRequest = async (id: number) => {
-    try {
-      await axios.patch(
-        `https://travel-studio-intern-backend.vercel.app//api/requests/${id}`,
-        {},
-        {
-          headers: {
-            'ngrok-skip-browser-warning': 'true',
-          },
-        }
-      );
-      setRequests((prev) => prev.filter((r) => r.id !== id));
-    } catch (err) {
-      console.error(`Failed to resolve request ${id}:`, err);
-    }
-  };
 
   useEffect(() => {
     fetchRequests();
@@ -85,9 +63,7 @@ export default function RequestsPage() {
                 <p className="text-sm text-gray-500">
                   Received: {new Date(req.createdAt).toLocaleString()}
                 </p>
-                <Button onClick={() => resolveRequest(req.id)} className="mt-2">
-                  Mark as Resolved
-                </Button>
+                
               </CardContent>
             </Card>
           ))}
